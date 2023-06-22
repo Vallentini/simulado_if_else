@@ -1,17 +1,36 @@
 <script>
     //PROBLEMA: Viajar para algum lugar
     //Peça para o usuário informar para qual estado deseja realizar a viagem. (Rio Grande do Sul-RS ou Minas Gerais-MG). Peça também para informar quantos dias ficará em viagem. O usuário também deverá informar "quantos dinheiros" (R$) possui para gastar na viagem.
-    
+
     //Considere que o custo diário de viagem para "RS" será de R$ 180,00 (180) e o custo diário de viagem para "MG" será de R$ 210,00 (210).
-    
+
     //Calcule se o usuário possui dinheiro suficiente para realizar a viagem para o destino que pretende. Se o usuário puder viajar, o programa apresentará a mensagem "Boa viagem" e quantos dias poderá ficar no destino, além de qual será o custo da viagem. Caso não possa viajar o programa apresentará a mensagem "Sem Férias" e também apresentará "quantos dinheiros" (R$) estão faltando para realizar a viagem.
 
     //ENTRADA
-
-
+    const destino = prompt("Informe para qual destino deseja viajar Rio Grande do Sul-RS ou Minas Gerais-MG:").trim().toLocaleLowerCase();
+    const quantosDias = Number(prompt("Informe quantos dias deseja ficará viajando:").trim());
+    const quantoTem = Number(prompt("Informe quanto dinheiro possui para gastar na viagem:").trim().replace(",", "."));
     //PROCESSAMENTO
-
-
+    const conta = 180 * quantosDias;
+    const conta2 = 210 * quantosDias;
+    if (destino == "mg" || destino == "minas gerais") {
+         if (conta < quantoTem) {
+            const diasPode = quantoTem / 180;
+        document.write(`Boa viagem, você poderá ficar até ${Math.ceil(diasPode)} dias e o custo da viagem sairá de R$${conta.toFixed(2).replace(".",",")}.`);
+        }
+        else if (conta > quantoTem) {
+            document.write(`Sem férias, ainda faltam R$${(conta - quantoTem)} para realizar a viagem`)
+        }
+    }
+    if (destino == "rs" || destino == "rio grande do sul") {
+         if (conta2 < quantoTem) {
+            const diasPode = quantoTem / 210;
+        document.write(`Boa viagem, você poderá ficar até ${Math.ceil(diasPode)} dias e o custo da viagem sairá de R$${conta2.toFixed(2).replace(".",",")}.`);
+        }
+        else if (conta2 > quantoTem) {
+            document.write(`Sem férias, ainda faltam R$${(conta2 - quantoTem)} para realizar a viagem`)
+        }
+    }
     //SAÍDA
 
 </script>
