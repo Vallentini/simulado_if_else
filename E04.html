@@ -7,10 +7,29 @@
     //Se o usuário for "Programador" e trabalhar mais que 8 horas diárias, o programa deverá calcular um adicional de 30% (30/100) na sua remuneração. Apresente também quanto recebe por hora, já com o adicional previsto.
 
     //ENTRADA
-    const salario = Number(prompt("Informe o seu salário:").trim().replace(",","."))
-    const cargo = prompt("Informe qual cargo oucupa (Estágiario ou programador)").trim().toLocaleLowerCase();
-    
+    const salario = Number(prompt("Informe o seu salário:").trim().replace(",","."));
+    const cargo = prompt("Informe qual cargo oucupa (Estágiario ou Programador):").trim().toLocaleLowerCase();
+    const horas = Number(prompt("Informe quantas horas trabalha por dia").trim());
     //PROCESSAMENTO
+    if (cargo == "estagiario" || cargo == "estagiário" && horas > 0 && horas <= 6) {
+        document.write(`Você recebe por hora R$${((salario/20)/horas).toFixed(2).replace(".",",")}.`);
+    }
+
+    else if (cargo ==  "estagiario" || cargo == "estagiário" && horas > 6) {
+        document.write(`Precisa ser contradado, o seu adicional é R$${(salario*0.5).toFixed(2).replace(".",",")} sua hora vale R$${(((salario/20)/horas)*1.5).toFixed(2).replace(".",",")}.`);
+    }
+
+    else if (cargo == "programador" && horas > 0 && horas <=8) {
+        document.write(`Você recebe por hora R$${((salario/20)/horas).toFixed(2).replace(".",",")}.`);
+    }
+
+    else if (cargo == "programador" && horas > 8) {
+        document.write(`Seu adicional é R$${(salario*0.3).toFixed(2).replace(".",",")}, você recebe por hora R$${(((salario/20)/horas)*1.3).toFixed(2).replace(".",",")}`);
+    }
+
+    else{
+        alert('Informe um cargo válido, ou um valor salárial válido.')
+    }
     //SAÍDA
 
 </script>
